@@ -62,7 +62,13 @@ class Transaction:
         msg_any.type_url = "/cosmos.bank.v1beta1.MsgSend"
         self._tx_body.messages.append(msg_any)
 
-
+    def add_custom_msg(
+             self, unpacked_msg, type_url: str
+    ) -> None:
+        msg_any = Any.Any()
+        msg_any.Pack(unpacked_msg)
+        msg_any.type_url = type_url
+        self._tx_body.messages.append(msg_any)
     def get_tx_bytes(self) -> str:
         self._tx_raw.body_bytes = self._tx_body.SerializeToString()
         self._tx_raw.auth_info_bytes = self._get_auth_info().SerializeToString()
