@@ -30,9 +30,9 @@ class Transaction:
             sequence: int,
             fee: int,
             gas: int,
-            fee_denom: str = "uatom",
+            fee_denom: str = "upersyx",
             memo: str = "",
-            chain_id: str = "cosmoshub-4",
+            chain_id: str = "athena-2",
             hrp: str = DEFAULT_BECH32_HRP,
     ) -> None:
         self._privkey = privkey
@@ -48,7 +48,7 @@ class Transaction:
         self._tx_raw = tx.TxRaw()
 
     def add_transfer(
-            self, recipient: str, amount: int, denom: str = "uatom"
+            self, recipient: str, amount: int, denom: str = "uterpx"
     ) -> None:
         msg = transfer.MsgSend()
         msg.from_address = privkey_to_address(self._privkey, hrp=self._hrp)
